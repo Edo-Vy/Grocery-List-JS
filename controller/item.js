@@ -18,8 +18,7 @@ function renderItem(arrItem) {
                     <p class="card__item-title">${item.item}</p>
                     <div class="card__button">
                     <button class="btn btn-edit" onclick ="editItem('${item.item}')" ><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-delete" onclick ="xoaItem('${item.item
-            }')"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-delete" onclick ="xoaItem('${item.item}')"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
       `;
@@ -74,6 +73,9 @@ document.querySelector('.btnSubmit').onclick = function () {
     // Sau khi thêm thành công => lưu arrItem vào localStorage
     var slItem = JSON.stringify(arrItem);
     luuLocalStorage("arrItem", slItem);
+
+    var html = `<p> Đã Thêm Thành Công</p>`;
+    document.querySelector('.alert').innerHTML = html;
 }
 
 /*=============== Xóa Item ================*/
@@ -90,17 +92,28 @@ function xoaItem(indexItem) {
             break;
 
         }
-       
+
     }
     arrItem.splice(viTriXoa, 1);
     // Say khi xóa tạo lại 1 list mới
     renderItem(arrItem);
+
+    var html = `<p> Đã Xóa Thành Công</p>`;
+    document.querySelector('.alert').innerHTML = html;
 }
 
 /**============= Chỉnh sửa Item ============= */
 
-function editItem(maItem) {
+function editItem(indexItem) {
 
-    console.log(item);
+    for ( var index = 0; index < arrItem.length; index ++){
+
+        var lItem = arrItem[index];
+        if (indexItem == lItem.item){
+
+            document.querySelector('.text__grocery').value = lItem.item;
+            break;
+        }
+    }
 
 }

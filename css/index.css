@@ -23,7 +23,12 @@ body {
     transition: all 0.3s linear;
     padding: 3em;
 }
+.alert{
 
+    font-size: 10px;
+    color: hsl(360, 71%, 66%);
+    margin-bottom: 15px;
+}
 .card__title {
     font-size: 30px;
     word-spacing: 2px;
